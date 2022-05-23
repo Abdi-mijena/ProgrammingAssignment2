@@ -1,15 +1,34 @@
-## Put comments here that give an overall description of what your
-## functions do
+## Below are two functions  used to create special matrix and
+## cache the inverse of the matrix
 
-## Write a short comment describing this function
+## This makeCacheMatrix function special matrix
 
 makeCacheMatrix <- function(x = matrix()) {
+        mat <- NULL
+        set <- function(newMatrix) {
+                x <<- newMatrix
+                mat <<- NULL
+        }
+        get <- function() x
+        setInverse <- function(inv) mat <<- inv
+        getInverse <- function() mat
+        list(set = set, get = get,
+       setInverse = setInverse,
+       getInverse = getInverse)
 
 }
 
 
-## Write a short comment describing this function
+## This cacheSolve function used to find inverse sepacial matrix
+## created by above function
 
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+        iv <- x$getInverse()
+        if(!is.null(iv)){
+                return(m)
+        }
+        data <- x$get()
+        iv <- solve(data, ...)
+        x$setInverse(iv)
+        iv
 }
